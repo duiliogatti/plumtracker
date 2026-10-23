@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plum! Tracker</title>
+<meta name="theme-color" content="#7a2d68">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Plum! Tracker">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<section class="login wrap" id="login" hidden>
+  <div class="loginbox">
+    <h1 class="brand">Plum! 2026</h1>
+    <p class="muted">Tracker de producción del festival. Entrá con el mail y la contraseña que te pasaron.</p>
+    <form id="loginForm" class="dlg" style="padding:0">
+      <label class="f"><span class="lbl">Mail</span><input id="loginEmail" type="email" required autocomplete="email" placeholder="nombre@mail.com"></label>
+      <label class="f"><span class="lbl">Contraseña</span><input id="loginPass" type="password" required autocomplete="current-password"></label>
+      <button class="btn primary" id="loginBtn" type="submit">Entrar</button>
+    </form>
+    <p class="loginerr" id="loginErr" hidden></p>
+  </div>
+</section>
+<div id="app" hidden>
+<header class="top">
+  <div class="wrap">
+    <div class="topin">
+      <h1 class="brand">Plum! 2026 <small>TRACKER DE PRODUCCIÓN</small></h1>
+      <div class="counts" id="counts"></div>
+      <div class="me" id="me"></div>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs">
+      <button role="tab" data-v="resumen">Resumen</button>
+      <button role="tab" data-v="tablero">Tablero</button>
+      <button role="tab" data-v="cronograma">Cronograma</button>
+      <button role="tab" data-v="invitados">Invitados</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="status" class="notice" hidden></div>
+  <section id="v-resumen" hidden></section>
+  <section id="v-tablero" hidden>
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Buscar tarea o responsable">
+      <select id="fArea"></select>
+      <select id="fEvent"></select>
+      <select id="fOwner"></select>
+      <button class="btn primary" id="newTask">+ Tarea</button>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+  <section id="v-cronograma" hidden>
+    <div class="toolbar">
+      <select id="gArea"></select>
+      <select id="gEvent"></select>
+      <label class="chip"><input type="checkbox" id="gDone"> mostrar hechas</label>
+      <button class="btn primary" id="newTask2">+ Tarea</button>
+    </div>
+    <div class="gwrap" id="gwrap"></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--gold-soft)"></i>PrePlum 25/10</span>
+      <span><i class="sw" style="background:var(--plum-soft)"></i>Festival 20 a 22/11</span>
+      <span><i class="sw" style="border-left:2px solid var(--bad)"></i>Hoy</span>
+      <span>◆ tarea con solo fecha de entrega</span>
+    </div>
+  </section>
+  <section id="v-invitados" hidden>
+    <div class="toolbar">
+      <input type="search" id="gq" placeholder="Buscar invitado">
+      <select id="gvEvent"></select>
+      <button class="btn primary" id="newGuest">+ Invitado</button>
+    </div>
+    <h2>Quién está en Tafí cada día</h2>
+    <div class="tblwrap" id="stay"></div>
+    <div class="section">
+      <h2>Ficha de invitados</h2>
+      <div class="tblwrap" id="glist"></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="dlg"><form method="dialog" class="dlg" id="dlgForm"></form></dialog>
+<div class="toast" id="toast" hidden></div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
